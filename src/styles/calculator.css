@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #121212; /* Темный фон */
+}
+
+.calculator {
+    background-color: #333333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    width: 300px;
+    display: flex;
+    flex-direction: column; /* Располагаем элементы вертикально */
+}
+
+.display {
+    background-color: black;
+    color: white;
+    font-size: 2em;
+    text-align: right;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap; /* Кнопки переносятся на следующую строку */
+    gap: 10px; /* Расстояние между кнопками */
+    justify-content: space-between; /* Равномерное распределение */
+}
+
+button {
+    flex: 1 1 20%; /* Ширина кнопки: 20% + адаптивность */
+    font-size: 1em;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.gray {
+    background-color: #666;
+    color: white;
+}
+
+button.orange {
+    background-color: #f58a42;
+    color: white;
+}
+
+button:hover {
+    opacity: 0.9;
+}
