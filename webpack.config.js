@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development', // 'production' для сборки
+    mode: 'production', // 'production' для сборки
     entry: './src/index.js', // Главный файл JavaScript
     output: {
         path: path.resolve(__dirname, 'dist'),

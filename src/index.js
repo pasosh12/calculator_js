@@ -79,7 +79,6 @@ function handleNumber(input) {
             display.textContent = input;
             shouldResetDisplay = false;
         } else {
-            // debugger
             display.textContent =
                 display.textContent === '0' ? input : display.textContent + input;
         }
@@ -98,7 +97,6 @@ function handleNumber(input) {
 // Функция для форматирования операнда, сохраняющая "0." перед точкой
 function formatOperand(operand) {
     // Если операнд начинается с точки, добавляем ведущий ноль
-    //     debugger
     if (operand.startsWith('.')) {
         operand = '0' + operand;
     }
@@ -167,14 +165,12 @@ function calculateResult() {
             return;
     }
     if (!Number.isInteger(result)) {
-        console.log('not integer')
         result = result.toFixed(2); // Убираем лишние нули
     }
 
     updateDisplay(result);
     shouldResetDisplay = true;
     firstOperand = result.toString();
-    // firstOperand = '';
     secondOperand = '';
     operator = '';
 }
@@ -186,7 +182,6 @@ function toggleSign() {
         firstOperand = (parseFloat(firstOperand) * -1).toString();
         updateDisplay(firstOperand);
     } else {
-        // debugger
         // Если оператор уже выбран, изменяем знак второго операнда
         secondOperand = (parseFloat(secondOperand) * -1).toString();
         updateDisplay(`${firstOperand} ${operator} ${secondOperand}`);

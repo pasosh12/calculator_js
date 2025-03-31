@@ -1,60 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0;
-    background-color: #121212; /* Темный фон */
+    background-color: white;
 }
 
 .calculator {
-    background-color: #333333;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    background-color: #575555;
+    border-radius: 6px;
+    overflow: hidden;
     width: 300px;
-    display: flex;
-    flex-direction: column; /* Располагаем элементы вертикально */
 }
 
+
 .display {
-    background-color: black;
-    color: white;
-    font-size: 2em;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #535353;
+    color: #fff;
+    font-size: 2rem;
     padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #444;
+    height: 80px;
+    overflow: hidden;
+    word-break: break-word;
+    text-align: right;
+}
+
+.display span {
+    display: inline-block;
+    width: 100%;
+    font-size: clamp(1rem, 5vw, 2rem);
+    line-height: 1.2;
 }
 
 .buttons {
-    display: flex;
-    flex-wrap: wrap; /* Кнопки переносятся на следующую строку */
-    gap: 10px; /* Расстояние между кнопками */
-    justify-content: space-between; /* Равномерное распределение */
+    font-size: 26px;
+    gap: 2px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row: 2/3;
 }
 
-button {
-    flex: 1 1 20%; /* Ширина кнопки: 20% + адаптивность */
+.buttons button {
     font-size: 1em;
     padding: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 1px;
     cursor: pointer;
-}
-
-button.gray {
-    background-color: #666;
+    transition: background-color 0.3s ease;
     color: white;
+    background-color: #797878;
 }
 
-button.orange {
-    background-color: #f58a42;
-    color: white;
+.buttons .btnGrey {
+    background-color: #646464;
 }
 
-button:hover {
-    opacity: 0.9;
+.buttons button:hover {
+    background-color: #aca7a7;
+}
+
+.buttons button.operator {
+    background-color: #FF9F0A;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+.traffic-light {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 10px;
+}
+
+.circle {
+
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+}
+
+.red {
+    background-color: #ff605c;
+}
+
+.yellow {
+    background-color: #ffbd44;
+}
+
+.green {
+    background-color: #00ca4e;
+}
+
+.buttons button.operator:hover {
+    background-color: #e08400;
+}
+
+.circle:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
