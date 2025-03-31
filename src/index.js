@@ -54,6 +54,8 @@ function handleInput(input) {
         clearCalculator(); // Сброс калькулятора
     } else if (input === '±') {
         toggleSign(); // Смена знака
+    }else if (input === '%') {
+        handlePercentage(); // Обработка процентов
     }
 }
 
@@ -77,6 +79,7 @@ function handleNumber(input) {
             display.textContent = input;
             shouldResetDisplay = false;
         } else {
+            // debugger
             display.textContent =
                 display.textContent === '0' ? input : display.textContent + input;
         }
@@ -95,12 +98,14 @@ function handleNumber(input) {
 // Функция для форматирования операнда, сохраняющая "0." перед точкой
 function formatOperand(operand) {
     // Если операнд начинается с точки, добавляем ведущий ноль
+    //     debugger
     if (operand.startsWith('.')) {
         operand = '0' + operand;
     }
 
     // Убираем лишние ведущие нули, но сохраняем "0." перед точкой
-    return operand.replace(/^0+(?!\.)/, '');
+    operand = operand.replace(/^0+(?!\.)/, '');
+    return operand === "" ? "0" : operand;
 }
 
 // Обработка ввода точки (дробного числа)
@@ -173,7 +178,7 @@ function calculateResult() {
     secondOperand = '';
     operator = '';
 }
-
+// Смена знака операнда
 function toggleSign() {
     if (display.textContent === '0') return; // Если на дисплее 0, ничего не делаем
     if (!operator || !secondOperand) {
@@ -214,15 +219,27 @@ function convertOperator(key) {
             return '÷';
         case '*':
             return '×';
-        case 'delete':
-            return 'AC';
         default: {
-            console.log(key)
             return key;
         }
     }
 }
-
+// Функция обработки процентов
+function handlePercentage() {
+    if (!operator) {
+        // Если оператор не выбран, преобразуем первый операнд в процент
+        if (firstOperand !== '') {
+            firstOperand = (parseFloat(firstOperand) / 100).toString();
+            updateDisplay(firstOperand);
+        }
+    } else {
+        // Если оператор выбран, преобразуем второй операнд в процент от первого
+        if (secondOperand !== '') {
+            secondOperand = ((parseFloat(firstOperand) * parseFloat(secondOperand)) / 100).toString();
+            updateDisplay(`${firstOperand} ${operator} ${secondOperand}`);
+        }
+    }
+}
 // Добавление обработчиков событий
 buttons.forEach((button) => {
     button.addEventListener('click', handleButtonClick);
