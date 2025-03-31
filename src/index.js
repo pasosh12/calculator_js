@@ -1,5 +1,6 @@
 require('./styles/calculator.css');
-
+require('./styles/theme.css');
+require('./scripts/ThemeToggle');
 // Получаем элементы дисплея и кнопок
 const display = document.querySelector('.display');
 const buttons = document.querySelectorAll('.buttons button');
